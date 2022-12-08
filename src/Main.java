@@ -60,7 +60,7 @@ public class Main {
 
   public static void getEvenNumbers(Set<Integer> integerSet, List<Integer> integerList) {
     for (Integer integer : integerSet) {
-      if (integer.intValue() % 2 == 0) {
+      if (integer % 2 == 0) {
         integerList.add(integer);
       }
     }
