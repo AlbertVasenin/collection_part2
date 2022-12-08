@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Product {
@@ -49,9 +48,8 @@ public class Product {
 
   @Override
   public String toString() {
-    return "Продукт: " + name + " " +
-        ", цена " + price + " рублей" +
-        ", количество " + amount + " кг.";
+    return "\n" + name + " " + ", цена " + price + " рублей" + ", количество " + amount
+        + " кг.";
   }
 
   @Override
@@ -63,8 +61,8 @@ public class Product {
       return false;
     }
     Product product = (Product) o;
-    return Objects.equals(name, product.name) && Objects.equals(price,
-        product.price) && Objects.equals(amount, product.amount);
+    return Objects.equals(name, product.name) && Objects.equals(price, product.price)
+        && Objects.equals(amount, product.amount);
   }
 
   @Override
