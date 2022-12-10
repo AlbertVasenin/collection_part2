@@ -51,6 +51,9 @@ public class Main {
     System.out.println(
         "Общая стоимость продуктов из рецепта: \"" + saladThree.getNameRecipe() + "\": "
             + saladThree.getCostOfProducts() + " рублей");
+    System.out.println();
+
+    market.deleteProduct(banana);
 
     System.out.println();
     Set<Integer> integerSet = new HashSet<>();

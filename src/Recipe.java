@@ -14,10 +14,10 @@ public class Recipe {
   }
 
   public void addProductInRecipe(Product product) {
-      if (products.contains(product)) {
-        throw new RuntimeException("Продукт уже есть в списке рецепта: " + product.getName());
-      }
-      products.add(product);
+    if (products.contains(product)) {
+      throw new RuntimeException("Продукт уже есть в списке рецепта: " + product.getName());
+    }
+    products.add(product);
   }
 
   public Set<Product> getProducts() {

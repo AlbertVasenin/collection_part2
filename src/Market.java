@@ -18,6 +18,18 @@ public final class Market {
     products.add(product);
   }
 
+  public void deleteProduct(Product product) {
+    try {
+      if (products.contains(product)) {
+        products.remove(product);
+      } else {
+        throw new RuntimeException();
+      }
+    } catch (RuntimeException e) {
+      System.out.println("Такого продукта нет в списке!");
+    }
+  }
+
   public String getName() {
     return name;
   }
