@@ -1,25 +1,23 @@
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 public class Recipe {
 
-  private final Set<Product> products;
-  private final Double costOfProducts;
+  private final Set<Product> products = new HashSet<>();
+  private Double costOfProducts = 0.0;
   private final String nameRecipe;
 
-  public Recipe(String nameRecipe, Set<Product> products, Double costOfProducts) {
-    this.products = products;
-    this.costOfProducts = 0.0;
+  public Recipe(String nameRecipe) {
     this.nameRecipe = (nameRecipe != null && !nameRecipe.trim().isEmpty()) ? nameRecipe
         : "...введите название рецепта...";
   }
 
   public void addProductInRecipe(Product product) {
-    if (products.contains(product)) {
-      throw new RuntimeException("Продукт уже есть в списке рецепта: " + product.getName());
-    } else {
+      if (products.contains(product)) {
+        throw new RuntimeException("Продукт уже есть в списке рецепта: " + product.getName());
+      }
       products.add(product);
-    }
   }
 
   public Set<Product> getProducts() {
@@ -27,6 +25,9 @@ public class Recipe {
   }
 
   public Double getCostOfProducts() {
+    for (Product product : products) {
+      costOfProducts += product.getPrice();
+    }
     return costOfProducts;
   }
 
@@ -43,9 +44,8 @@ public class Recipe {
       return false;
     }
     Recipe recipe = (Recipe) o;
-    return Objects.equals(products, recipe.products) && Objects.equals(
-        costOfProducts, recipe.costOfProducts) && Objects.equals(nameRecipe,
-        recipe.nameRecipe);
+    return Objects.equals(products, recipe.products) && Objects.equals(costOfProducts,
+        recipe.costOfProducts) && Objects.equals(nameRecipe, recipe.nameRecipe);
   }
 
   @Override
@@ -55,7 +55,7 @@ public class Recipe {
 
   @Override
   public String toString() {
-    return String.format("\nНазвание рецепта: %s, необходимые продукты: %s\n", nameRecipe,
+    return String.format("\nНазвание рецепта:\"%s\", необходимые продукты:%s\n", nameRecipe,
         getProducts());
   }
 }

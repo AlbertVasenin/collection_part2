@@ -6,9 +6,9 @@ public class Product {
   private Double price;
   private Double amount;
 
-  public Product(String name, Double price, Double amount) {
+  protected Product(String name, Double price, Double amount) {
     if (name == null || name.trim().isEmpty()) {
-      throw new FieldsConstructorEmpty("Заполните карточку товара полностью: " + getName());
+      throw new RuntimeException("Заполните карточку товара: " + getName());
     } else {
       this.name = name;
     }
@@ -48,8 +48,7 @@ public class Product {
 
   @Override
   public String toString() {
-    return "\n" + name + " " + ", цена " + price + " рублей" + ", количество " + amount
-        + " кг.";
+    return "" + getName() + ", цена: " + getPrice() + " рублей, " + getAmount() + " кг.\n";
   }
 
   @Override
@@ -69,4 +68,5 @@ public class Product {
   public int hashCode() {
     return Objects.hash(name, price, amount);
   }
+
 }
